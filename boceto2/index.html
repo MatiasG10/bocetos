@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relojes de Lujo - Colección Exclusiva</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <!-- Hero Section con Parallax -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Colección Perpetual</h1>
+            <p class="hero-subtitle">Un legado de excelencia desde 1905</p>
+        </div>
+        <div class="hero-watch rellax" data-rellax-speed="-3">
+            <div class="watch-container">
+                <div class="watch-face"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Oyster Perpetual -->
+    <section class="collection-section">
+        <div class="container">
+            <div class="content-wrapper scroll-animate">
+                <div class="text-content">
+                    <h2 class="section-title">Oyster Perpetual</h2>
+                    <p class="section-description">
+                        El reloj más representativo de nuestra maestría horlogera.
+                        Un diseño atemporal que trasciende generaciones.
+                    </p>
+                    <a href="#" class="btn-primary">Descubrir más</a>
+                </div>
+                <div class="watch-showcase">
+                    <div class="watch-360">
+                        <img src="https://via.placeholder.com/400x400/1a1a1a/ffffff?text=RELOJ+360°" alt="Reloj 360"
+                            class="watch-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección GMT-Master II -->
+    <section class="collection-section alt-bg">
+        <div class="container">
+            <div class="content-wrapper scroll-animate">
+                <div class="watch-showcase">
+                    <div class="watch-360">
+                        <img src="https://via.placeholder.com/400x400/2a2a2a/ffffff?text=GMT-MASTER+II"
+                            alt="GMT-Master II" class="watch-image">
+                    </div>
+                </div>
+                <div class="text-content">
+                    <h2 class="section-title">GMT-Master II</h2>
+                    <p class="section-description">
+                        Diseñado para viajeros globales. Dos zonas horarias,
+                        un estilo inconfundible.
+                    </p>
+                    <a href="#" class="btn-primary">Explorar colección</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Parallax con Capas -->
+    <section class="parallax-section">
+        <div class="parallax-layer layer-1"></div>
+        <div class="parallax-layer layer-2"></div>
+        <div class="parallax-layer layer-3"></div>
+        <div class="parallax-content">
+            <h2 class="section-title">La Maestría del Tiempo</h2>
+            <p>Cada componente cuenta una historia de perfección</p>
+        </div>
+    </section>
+
+    <!-- Sección de Características -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title text-center">Compromiso con la Excelencia</h2>
+            <div class="features-grid">
+                <div class="feature-item scroll-animate">
+                    <div class="feature-icon"></div>
+                    <h3>Certificación Cronométrica</h3>
+                    <p>Estándares de precisión superiores a la industria</p>
+                </div>
+                <div class="feature-item scroll-animate" style="animation-delay: 0.2s">
+                    <div class="feature-icon"></div>
+                    <h3>Acero Oyster</h3>
+                    <p>Material propio, resistente a la corrosión</p>
+                </div>
+                <div class="feature-item scroll-animate" style="animation-delay: 0.4s">
+                    <div class="feature-icon"></div>
+                    <h3>Impermeabilidad</h3>
+                    <p>Hasta 100 metros bajo el agua</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Colección Exclusiva. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- <script src="script.js"></script> -->
+    <script>
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.to(".watch-image", {
+            rotation: 360,
+            scrollTrigger: {
+                trigger: ".watch-showcase",
+                start: "top center",
+                end: "bottom center",
+                scrub: true
+            }
+        });
+
+        gsap.from(".section-title", {
+            y: 100,
+            opacity: 0,
+            duration: 1,
+            scrollTrigger: {
+                trigger: ".collection-section",
+                start: "top 80%"
+            }
+        });
+    </script>
+</body>
+
+</html>
