@@ -395,6 +395,119 @@ body {
             }
         }
     }
+
+    /* seccion planes*/
+    .pricing-section {
+        padding: 120px 0;
+        background: var(--color-bg-secondary);
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+
+            .section-title {
+                font-size: clamp(2.5rem, 5vw, 4rem);
+                font-weight: 700;
+                text-align: center;
+                margin-bottom: 4rem;
+                opacity: 0;
+                animation: fadeInUp 0.8s ease-out forwards;
+                animation-timeline: view();
+                animation-range: cover 20% cover 50%;
+
+            }
+
+            .pricing-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+                max-width: 1200px;
+                margin: 0 auto;
+
+                .pricing-card {
+                    background: var(--color-bg-card);
+                    padding: 3rem 2rem;
+                    border-radius: 20px;
+                    border: 1px solid var(--color-border);
+                    text-align: center;
+                    position: relative;
+                    transition: var(--transition);
+                    opacity: 0;
+                    animation: fadeInScale 0.6s ease-out forwards;
+                    animation-timeline: view();
+                    animation-range: cover 20% cover 50%;
+
+                    &:hover {
+                        transform: translateY(-10px);
+                        box-shadow: 0 25px 50px var(--color-shadow);
+                    }
+
+                    &.featured {
+                        border: 2px solid var(--color-accent);
+                        transform: scale(1.05);
+                    }
+
+                    &.popular {
+                        background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+                    }
+
+                    & h3 {
+                        font-size: 3rem;
+                        font-weight: 700;
+                        margin: 2rem 0 0.5rem;
+                        color: var(--color-text-primary);
+                    }
+
+                    .pricing-badge {
+                        position: absolute;
+                        top: -15px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background: var(--color-accent);
+                        color: white;
+                        padding: 0.5rem 1.5rem;
+                        border-radius: 20px;
+                        font-size: 0.9rem;
+                        font-weight: 600;
+                    }
+
+                    .pricing-description {
+                        color: var(--color-text-secondary);
+                        margin-bottom: 2rem;
+                    }
+
+                    .pricing-features {
+                        list-style: none;
+                        margin: 2rem 0;
+                        text-align: left;
+
+                        li {
+                            padding: 0.8rem 0;
+                            padding-left: 1.5rem;
+                            position: relative;
+                            color: var(--color-text-secondary);
+
+                            &::before {
+                                content: '✓';
+                                position: absolute;
+                                left: 0;
+                                color: var(--color-accent);
+                                font-weight: bold;
+                            }
+                        }
+                    }
+
+                    .btn-primary {
+                        width: 100%;
+                        margin-top: 1rem;
+                    }
+
+                }
+            }
+        }
+
+    }
 }
 
 /*para cambiar icono - Toogle Tema*/
@@ -445,111 +558,6 @@ body {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ===== SECCIÓN PLANES ===== */
-.pricing-section {
-    padding: 120px 0;
-    background: var(--color-bg-secondary);
-}
-
-.pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.pricing-card {
-    background: var(--color-bg-card);
-    padding: 3rem 2rem;
-    border-radius: 20px;
-    border: 1px solid var(--color-border);
-    text-align: center;
-    position: relative;
-    transition: var(--transition);
-    opacity: 0;
-    animation: fadeInScale 0.6s ease-out forwards;
-    animation-timeline: view();
-    animation-range: cover 20% cover 50%;
-}
-
-.pricing-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 25px 50px var(--color-shadow);
-}
-
-.pricing-card.featured {
-    border: 2px solid var(--color-accent);
-    transform: scale(1.05);
-}
-
-.pricing-badge {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--color-accent);
-    color: white;
-    padding: 0.5rem 1.5rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-.pricing-badge.popular {
-    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
-}
-
-.pricing-card h3 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin: 2rem 0 0.5rem;
-    color: var(--color-text-primary);
-}
-
-.pricing-description {
-    color: var(--color-text-secondary);
-    margin-bottom: 2rem;
-}
-
-.pricing-features {
-    list-style: none;
-    margin: 2rem 0;
-    text-align: left;
-}
-
-.pricing-features li {
-    padding: 0.8rem 0;
-    padding-left: 1.5rem;
-    position: relative;
-    color: var(--color-text-secondary);
-}
-
-.pricing-features li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--color-accent);
-    font-weight: bold;
-}
-
-.pricing-card .btn-primary {
-    width: 100%;
-    margin-top: 1rem;
-}
 
 /* ===== SECCIÓN TESTIMONIOS ===== */
 .testimonials-section {
