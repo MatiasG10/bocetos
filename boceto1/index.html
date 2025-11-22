@@ -100,28 +100,62 @@
     <section class="portfolio-section">
         <div class="container">
             <h2 class="section-title scroll-animate">Proyectos Destacados</h2>
-            <div class="portfolio-grid">
-                <div class="project-card scroll-animate">
-                    <div class="project-image"></div>
-                    <div class="project-overlay">
-                        <h3>E-commerce Premium</h3>
-                        <p>+300% conversión</p>
+
+            <div class="custom-slider">
+                <div class="slider-wrapper">
+                    <div class="slider-track" id="sliderTrack">
+                        <!-- Slide 1 -->
+                        <div class="slider-slide active"
+                            style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200');">
+                            <div class="slide-overlay"></div>
+                            <div class="slide-content">
+                                <h3>E-commerce Premium</h3>
+                                <p>+300% conversión en ventas</p>
+                                <a href="#" class="slide-btn">Ver Proyecto</a>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="slider-slide"
+                            style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200');">
+                            <div class="slide-overlay"></div>
+                            <div class="slide-content">
+                                <h3>Platform SaaS</h3>
+                                <p>Escalabilidad empresarial</p>
+                                <a href="#" class="slide-btn">Ver Proyecto</a>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="slider-slide"
+                            style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200');">
+                            <div class="slide-overlay"></div>
+                            <div class="slide-content">
+                                <h3>Corporate Site</h3>
+                                <p>Diseño institucional</p>
+                                <a href="#" class="slide-btn">Ver Proyecto</a>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="slider-slide"
+                            style="background-image: url('https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=1200');">
+                            <div class="slide-overlay"></div>
+                            <div class="slide-content">
+                                <h3>App Mobile</h3>
+                                <p>Experiencia nativa</p>
+                                <a href="#" class="slide-btn">Ver Proyecto</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="project-card scroll-animate" style="animation-delay: 0.2s">
-                    <div class="project-image"></div>
-                    <div class="project-overlay">
-                        <h3>Platform SaaS</h3>
-                        <p>Escalabilidad empresarial</p>
-                    </div>
-                </div>
-                <div class="project-card scroll-animate" style="animation-delay: 0.4s">
-                    <div class="project-image"></div>
-                    <div class="project-overlay">
-                        <h3>Corporate Site</h3>
-                        <p>Diseño institucional</p>
-                    </div>
-                </div>
+
+                <!-- Controles -->
+                <button class="slider-btn-nav prev" id="prevBtn">‹</button>
+                <button class="slider-btn-nav next" id="nextBtn">›</button>
+
+                <!-- Indicadores -->
+                <div class="slider-dots" id="sliderDots"></div>
             </div>
         </div>
     </section>
@@ -459,19 +493,120 @@
         });
     </script>
 
-    <!-- pelicula superior a la imagen-->
+    <!-- JavaScript Custom Slider - Agregar antes de cerrar </body> -->
     <script>
-        window.addEventListener('scroll', () => {
-            const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight));
-            const overlay = document.querySelector('#app-background::after');
-            const maxOpacity = 0.8; // Oscuridad máxima
-            const minOpacity = 0.4; // Oscuridad mínima
+        class CustomSlider {
+            constructor() {
+                this.track = document.getElementById('sliderTrack');
+                this.slides = document.querySelectorAll('.slider-slide');
+                this.dotsContainer = document.getElementById('sliderDots');
+                this.prevBtn = document.getElementById('prevBtn');
+                this.nextBtn = document.getElementById('nextBtn');
 
-            // Empieza a oscurecer después del 50% del scroll
-            if (scrollPercentage > 0.5) {
-                const opacity = minOpacity + ((scrollPercentage - 0.5) * 2 * (maxOpacity - minOpacity));
-                document.documentElement.style.setProperty('--overlay-opacity', Math.min(opacity, maxOpacity));
+                this.currentIndex = 0;
+                this.autoplayInterval = null;
+                this.isTransitioning = false;
+
+                this.init();
             }
+
+            init() {
+                // Crear dots
+                this.createDots();
+
+                // Event listeners
+                this.prevBtn?.addEventListener('click', () => this.prev());
+                this.nextBtn?.addEventListener('click', () => this.next());
+
+                // Touch/swipe para móviles
+                this.initTouch();
+
+                // Autoplay
+                this.startAutoplay();
+
+                // Pausar en hover
+                this.track?.addEventListener('mouseenter', () => this.stopAutoplay());
+                this.track?.addEventListener('mouseleave', () => this.startAutoplay());
+            }
+
+            createDots() {
+                this.slides.forEach((_, index) => {
+                    const dot = document.createElement('span');
+                    dot.classList.add('dot');
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => this.goTo(index));
+                    this.dotsContainer?.appendChild(dot);
+                });
+                this.dots = document.querySelectorAll('.dot');
+            }
+
+            goTo(index) {
+                if (this.isTransitioning) return;
+
+                this.isTransitioning = true;
+
+                // Remover active
+                this.slides[this.currentIndex].classList.remove('active');
+                this.dots[this.currentIndex].classList.remove('active');
+
+                // Actualizar índice
+                this.currentIndex = index;
+
+                // Agregar active
+                this.slides[this.currentIndex].classList.add('active');
+                this.dots[this.currentIndex].classList.add('active');
+
+                setTimeout(() => {
+                    this.isTransitioning = false;
+                }, 600);
+            }
+
+            next() {
+                const nextIndex = (this.currentIndex + 1) % this.slides.length;
+                this.goTo(nextIndex);
+            }
+
+            prev() {
+                const prevIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+                this.goTo(prevIndex);
+            }
+
+            startAutoplay() {
+                this.autoplayInterval = setInterval(() => this.next(), 4000);
+            }
+
+            stopAutoplay() {
+                clearInterval(this.autoplayInterval);
+            }
+
+            initTouch() {
+                let startX = 0;
+                let endX = 0;
+
+                this.track?.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+
+                this.track?.addEventListener('touchmove', (e) => {
+                    endX = e.touches[0].clientX;
+                });
+
+                this.track?.addEventListener('touchend', () => {
+                    const diff = startX - endX;
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) {
+                            this.next();
+                        } else {
+                            this.prev();
+                        }
+                    }
+                });
+            }
+        }
+
+        // Inicializar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            new CustomSlider();
         });
     </script>
 </body>
