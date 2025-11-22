@@ -17,6 +17,10 @@
 
     /* Transiciones suaves */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --overlay-opacity: 0.4;
+    /*fondo*/
+    --bg: url('./img/nexocatv0.jpg');
 }
 
 /* Matices de Negro (Modo Noche) */
@@ -34,6 +38,8 @@
     --color-accent-light: #85C1E9;
     --color-border: #2C2E32;
     --color-shadow: rgba(0, 0, 0, 0.3);
+    /*fondo*/
+    --bg: url('./img/nexocatv0\ -invert.jpg');
 }
 
 /* Reset Global */
@@ -45,6 +51,56 @@
 
 html {
     scroll-behavior: smooth;
+}
+
+#app-background {
+    height: 100%;
+    left: 0px;
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        transition: opacity 0.3s ease;
+        background: rgba(0, 0, 0, var(--overlay-opacity));
+    }
+
+    .background-image {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: var(--bg);
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .bg-particles {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--color-accent-light);
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatParticle 10s linear infinite;
+        }
+    }
 }
 
 body {
@@ -105,7 +161,7 @@ body {
             animation: backgroundPulse 8s ease-in-out infinite;
         }
 
-        .hero-particles {
+        /* .hero-particles {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -120,7 +176,7 @@ body {
                 opacity: 0;
                 animation: floatParticle 10s linear infinite;
             }
-        }
+        } */
 
         .hero-content {
             position: relative;
@@ -247,7 +303,9 @@ body {
     /* Sección Servicios */
     .services-section {
         padding: 120px 0;
-        background: var(--color-bg-secondary);
+        /* background: var(--color-bg-secondary); */
+        position: relative;
+        z-index: 100;
 
         .container {
             max-width: 1200px;
@@ -322,7 +380,9 @@ body {
     /* Portfolio */
     .portfolio-section {
         padding: 120px 0;
-        background: var(--color-bg-primary);
+        /* background: var(--color-bg-primary); */
+        position: relative;
+        z-index: 100;
 
         .container {
             max-width: 1200px;
@@ -400,7 +460,9 @@ body {
     /* seccion planes*/
     .pricing-section {
         padding: 120px 0;
-        background: var(--color-bg-secondary);
+        /* background: var(--color-bg-secondary); */
+        position: relative;
+        z-index: 100;
 
         .container {
             max-width: 1200px;
@@ -528,7 +590,9 @@ body {
     /* seccion testimonios */
     .testimonials-section {
         padding: 120px 0;
-        background: var(--color-bg-primary);
+        /* background: var(--color-bg-primary); */
+        position: relative;
+        z-index: 100;
 
         .container {
             max-width: 1200px;
@@ -661,7 +725,9 @@ body {
     /* seccion tecnologias */
     .tech-section {
         padding: 100px 0;
-        background: var(--color-bg-secondary);
+        /* background: var(--color-bg-secondary); */
+        position: relative;
+        z-index: 100;
 
         .container {
             max-width: 1200px;
@@ -767,7 +833,9 @@ body {
     /* seccion contacto */
     .contact-section {
         padding: 120px 0;
-        background: var(--color-bg-primary);
+        /* background: var(--color-bg-primary); */
+        position: relative;
+        z-index: 100;
 
         .container {
             max-width: 1200px;
@@ -895,6 +963,8 @@ body {
 
     /* Footer */
     .footer {
+        position: relative;
+        z-index: 100;
         padding: 2rem 0;
         text-align: center;
         background: var(--color-bg-secondary);
@@ -917,21 +987,7 @@ body {
     display: block;
 }
 
-/*hero*/
-/*hero-background */
-@keyframes backgroundPulse {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.9;
-    }
-}
-
-/*hero-particles */
+/*bg-particles */
 @keyframes floatParticle {
     0% {
         opacity: 0;
@@ -949,6 +1005,20 @@ body {
     100% {
         opacity: 0;
         transform: translateY(-100px) scale(1.5);
+    }
+}
+
+/*hero*/
+/*hero-background */
+@keyframes backgroundPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.9;
     }
 }
 

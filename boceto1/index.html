@@ -12,6 +12,10 @@
 </head>
 
 <body>
+    <div id="app-background">
+        <div id="app-background-image" class="background-image"></div>
+        <div class="bg-particles" id="particles"></div>
+    </div>
     <!-- Toggle Modo Día/Noche -->
     <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
         <svg class="sun-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -24,10 +28,10 @@
         </svg>
     </button>
 
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-background"></div>
-        <div class="hero-particles" id="particles"></div>
         <div class="hero-content">
             <h1 class="hero-title">Nexocat</h1>
             <p class="hero-subtitle">Creamos experiencias digitales que perduran</p>
@@ -422,6 +426,22 @@
         document.addEventListener('DOMContentLoaded', () => {
             // ... (tu código existente) ...
             new FormValidator();
+        });
+    </script>
+
+    <!-- pelicula superior a la imagen-->
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight));
+            const overlay = document.querySelector('#app-background::after');
+            const maxOpacity = 0.8; // Oscuridad máxima
+            const minOpacity = 0.4; // Oscuridad mínima
+
+            // Empieza a oscurecer después del 50% del scroll
+            if (scrollPercentage > 0.5) {
+                const opacity = minOpacity + ((scrollPercentage - 0.5) * 2 * (maxOpacity - minOpacity));
+                document.documentElement.style.setProperty('--overlay-opacity', Math.min(opacity, maxOpacity));
+            }
         });
     </script>
 </body>
