@@ -729,7 +729,7 @@ body {
                     transform: translateX(50px);
                     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
                     background: var(--color-bg-card);
-                    padding: 3rem;
+                    padding: 3rem 4rem;
                     border-radius: 20px;
                     border: 1px solid var(--color-border);
 
@@ -778,11 +778,12 @@ body {
 
                 .carousel-controls {
                     position: absolute;
-                    top: 50%;
+                    top: 45%;
                     width: 100%;
                     display: flex;
                     justify-content: space-between;
                     transform: translateY(-50%);
+                    padding: 0 0.5rem;
 
                     .carousel-btn {
                         background: var(--color-bg-card);
@@ -810,12 +811,13 @@ body {
                     margin-top: 2rem;
 
                     .indicator {
-                        width: 10px;
-                        height: 10px;
-                        border-radius: 50%;
+                        width: 40px;
+                        height: 4px;
+                        border-radius: 2px;
                         background: var(--color-border);
                         cursor: pointer;
                         transition: var(--transition);
+                        margin-top: 1rem;
 
                         &.active {
                             background: var(--color-accent);
