@@ -2134,13 +2134,82 @@ body {
             z-index: 100;
         }
 
+        .hero-visual {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+
+            .code-window {
+                width: 400px;
+                background: var(--color-bg-card);
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 20px 60px var(--color-shadow);
+                border: 1px solid var(--color-border);
+                opacity: 0;
+                animation: fadeInScale 1s ease-out 0.8s forwards;
+
+                .code-header {
+                    height: 40px;
+                    background: var(--color-bg-secondary);
+                    display: flex;
+                    align-items: center;
+                    padding: 0 1rem;
+                    gap: 0.5rem;
+
+                    .code-dot {
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 50%;
+
+                        &.red {
+                            background: #FF5F57;
+                        }
+
+                        &.yellow {
+                            background: #FFBD2E;
+                        }
+
+                        &.green {
+                            background: #28CA42;
+                        }
+                    }
+                }
+
+                .code-body {
+                    padding: 1.5rem;
+                    font-family: 'Fira Code', 'Courier New', monospace;
+                    font-size: 14px;
+                    line-height: 1.6;
+
+                    .code-keyword {
+                        color: #FF7ED4;
+                    }
+
+                    .code-function {
+                        color: var(--color-accent);
+                    }
+
+                    .code-string {
+                        color: #A3FF99;
+                    }
+
+                    .code-property {
+                        color: #99EFFF;
+                    }
+                }
+            }
+        }
+
         &>div {
-            box-shadow:
+            /* box-shadow:
                 -1em -0.2em 0.4em -1.1em #c2ccff,
                 inset 0em 0em 0em 2px #c2ccff,
                 inset 0.2em 0.3em 0.2em -0.2em #c2ccff,
-                inset 10.2em 10.3em 2em -10em #d4e6ff2f;
-            background: #121521;
+                inset 10.2em 10.3em 2em -10em #d4e6ff2f; */
+            /* background: #121521; */
             z-index: 1;
             filter: brightness(0.8);
             position: absolute;
@@ -2154,34 +2223,25 @@ body {
 
         &>div:nth-child(1) {
             bottom: -240%;
-            translate: -6em 2em;
+            translate: -5em 4em;
             animation: mountainload1 2s ease-out 2.4s forwards;
+            z-index: 15;
         }
 
         &>div:nth-child(2) {
             bottom: -240%;
-            translate: -2em 0em;
+            translate: -14em 6em;
             width: 14em;
             height: 20em;
             animation: mountainload2 2s ease-out 2.2s forwards;
+            z-index: 10;
         }
 
         &>div:nth-child(3) {
             bottom: -240%;
-            translate: 6em 3em;
+            translate: 2em 5em;
             animation: mountainload1 2s ease-out 2s forwards;
-        }
-
-        &>div::before {
-            content: '';
-            display: block;
-            background: repeating-radial-gradient(at 100% 100%, transparent 0%, #c2ccff22 2px, transparent 4px);
-            width: 12em;
-            height: 12em;
-            position: absolute;
-            left: 0;
-            top: 0;
-            border-bottom-right-radius: 100%;
+            z-index: 5;
         }
     }
 
