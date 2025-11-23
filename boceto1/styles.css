@@ -18,8 +18,9 @@
     /* Transiciones suaves */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --overlay-opacity: 0.4;
     /*fondo*/
+    --overlay-opacity: 0.9;
+    --overlay:rgba(50, 60, 70, var(--overlay-opacity));
     --bg: url('./img/nexocatv0.jpg');
 }
 
@@ -40,6 +41,8 @@
     --color-shadow: rgba(0, 0, 0, 0.3);
     /*fondo*/
     --bg: url('./img/nexocatv0\ -invert.jpg');
+    --overlay:rgba(0, 0, 0, var(--overlay-opacity));
+    --overlay-opacity: 0.4;
 }
 
 /* Reset Global */
@@ -71,7 +74,7 @@ html {
         height: 100%;
         z-index: 2;
         transition: opacity 0.3s ease;
-        background: rgba(0, 0, 0, var(--overlay-opacity));
+        background: var(--overlay);
     }
 
     .background-image {
@@ -1728,9 +1731,9 @@ body {
         transition: box-shadow 1s ease-in-out;
     }
 
-    &>div.mid-spot:hover {
+    /* &>div.mid-spot:hover {
         box-shadow: -0.3em 0.1em 0.2em 0 #d8bd10;
-    }
+    } */
 
     &> :nth-child(2):hover~.spotlight {
         animation: colorize 10s linear infinite;
