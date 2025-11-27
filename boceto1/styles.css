@@ -789,11 +789,25 @@ body {
                 width: calc(100% - 100px);
                 height: 500px;
                 margin: 0 auto;
-                opacity: 0;
-                transform: translateY(50px);
-                animation: fadeInUp 0.8s ease-out forwards;
-                animation-timeline: view();
-                animation-range: cover 20% cover 50%;
+
+                /* Efecto hover global */
+                &:hover>.expand-option {
+                    opacity: 1;
+                    /* Mantener opacidad completa */
+                    filter: brightness(0.4);
+                    /* Oscurecer en lugar de transparentar */
+                }
+
+                &:hover>.expand-option:hover {
+                    opacity: 1;
+                    filter: brightness(1);
+                    /* Brillo normal */
+                }
+
+                &:hover>.expand-option.active {
+                    filter: brightness(1.1) !important;
+                    /* La activa más brillante */
+                }
 
                 .expand-option {
                     position: relative;
@@ -808,24 +822,28 @@ body {
                     backdrop-filter: blur(10px);
                     border: 1px solid rgba(255, 255, 255, 0.2);
                     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-                    transition: transform 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95),
-                        border-radius 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95),
-                        box-shadow 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+                    transition: transform 0.8s cubic-bezier(0.05, 0.61, 0.41, 0.95),
+                        border-radius 0.8s cubic-bezier(0.05, 0.61, 0.41, 0.95),
+                        box-shadow 0.8s cubic-bezier(0.05, 0.61, 0.41, 0.95),
+                        opacity 0.8s ease,
+                        filter 0.8s ease,
+                        width 0.8s cubic-bezier(0.05, 0.61, 0.41, 0.95);
                     background-repeat: no-repeat;
-
 
                     &.active {
                         flex-grow: 10000;
-                        transform: scale(0.9);
+                        transform: scale(0.98);
                         max-width: 800px;
                         margin: 0px;
                         border-radius: 40px;
                         box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
                         background-size: cover;
+                        opacity: 1 !important;
+                        filter: grayscale(0) !important;
 
                         .expand-shadow {
-                            box-shadow: inset 0 -120px 120px -120px rgba(0, 0, 0, 0.4),
-                                inset 0 -120px 120px -100px rgba(0, 0, 0, 0.3);
+                            box-shadow: inset 0 -120px 120px -120px rgba(0, 0, 0, 0.5),
+                                inset 0 -120px 120px -100px rgba(0, 0, 0, 0.4);
                         }
 
                         .expand-label {
@@ -866,7 +884,7 @@ body {
                         left: 0px;
                         right: 0px;
                         height: 150px;
-                        transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+                        transition: 0.8s cubic-bezier(0.05, 0.61, 0.41, 0.95);
                     }
 
                     .expand-label {
@@ -874,7 +892,7 @@ body {
                         position: absolute;
                         right: 0px;
                         height: 60px;
-                        transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+                        transition: 0.8s cubic-bezier(0.05, 0.61, 0.41, 0.95);
 
                         .expand-icon {
                             display: flex;
@@ -890,6 +908,7 @@ body {
                             color: var(--color-accent);
                             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
                             border: 1px solid rgba(255, 255, 255, 0.3);
+                            transition: transform 0.3s ease;
 
                             svg {
                                 width: 28px;
@@ -907,8 +926,8 @@ body {
 
                             >div {
                                 position: relative;
-                                transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95),
-                                    opacity 0.5s ease-out;
+                                transition: 0.8s cubic-bezier(0.05, 0.61, 0.41, 0.95),
+                                    opacity 0.8s ease-out;
                             }
 
                             .expand-main {

@@ -842,16 +842,13 @@
             // Click inmediato para mobile y desktop
             option.addEventListener('click', activateOption);
 
-            // Hover con delay para desktop
+            // Hover SIN delay para desktop (más fluido como el ejemplo)
             option.addEventListener('mouseenter', () => {
                 clearTimeout(hoverTimeout);
-                hoverTimeout = setTimeout(activateOption, 300);
+                activateOption(); // Inmediato, sin delay
             });
 
-            // Limpiar el timeout si sale antes del delay
-            option.addEventListener('mouseleave', () => {
-                clearTimeout(hoverTimeout);
-            });
+            // No necesitamos mouseleave porque el hover en otra card la activa
         });
     </script>
 
