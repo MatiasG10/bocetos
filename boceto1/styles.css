@@ -1333,6 +1333,7 @@ body {
                     animation: fadeInScale 0.6s ease-out forwards;
                     animation-timeline: view();
                     animation-range: cover 20% cover 50%;
+                    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
                     &:first-child {
                         margin-right: -30px;
@@ -1360,6 +1361,7 @@ body {
                         box-shadow: 0 20px 60px rgba(105, 110, 221, 0.3);
                         animation-delay: 0.2s;
                         transform: scale(1.05);
+                        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
                         .card-title {
                             color: white;

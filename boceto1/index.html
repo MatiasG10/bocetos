@@ -694,7 +694,7 @@
         });
     </script>
 
-    <!-- JavaScript Custom Slider - Agregar antes de cerrar </body> -->
+    <!-- JavaScript Custom Slider - Agregar antes de cerrar </body> /luego hacer modulo-->
     <script>
         class CustomSlider {
             constructor() {
@@ -811,7 +811,7 @@
         });
     </script>
 
-    <!-- JavaScript para las cards expandibles - servicios -->
+    <!-- JavaScript para las cards expandibles - servicios /luego hacer modulo-->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const options = document.querySelectorAll('.expand-option');
@@ -827,7 +827,7 @@
         });
     </script>
 
-    <!-- Seccion servicios-->
+    <!-- Seccion servicios /luego hacer modulo-->
     <script>
         const expandOptions = document.querySelectorAll('.expand-option');
         let hoverTimeout;
@@ -852,6 +852,60 @@
             option.addEventListener('mouseleave', () => {
                 clearTimeout(hoverTimeout);
             });
+        });
+    </script>
+
+    <!-- seccion planes /luego hacer modulo-->
+    <script>
+        // Rotación automática de pricing cards
+        class PricingRotator {
+            constructor() {
+                this.cards = document.querySelectorAll('.pricing-card-modern');
+                this.currentFeatured = 1; // Índice de la card featured (comienza en el medio)
+                this.rotationInterval = null;
+                this.init();
+            }
+
+            init() {
+                if (this.cards.length !== 3) return;
+
+                // Iniciar rotación automática cada 4 segundos
+                this.startRotation();
+
+                // Pausar al hacer hover sobre cualquier card
+                this.cards.forEach(card => {
+                    card.addEventListener('mouseenter', () => this.pauseRotation());
+                    card.addEventListener('mouseleave', () => this.startRotation());
+                });
+            }
+
+            rotate() {
+                // Remover clase featured de todas
+                this.cards.forEach(card => card.classList.remove('featured'));
+
+                // Siguiente card featured
+                this.currentFeatured = (this.currentFeatured + 1) % this.cards.length;
+
+                // Agregar clase featured a la siguiente
+                this.cards[this.currentFeatured].classList.add('featured');
+            }
+
+            startRotation() {
+                this.pauseRotation(); // Limpiar intervalo anterior
+                this.rotationInterval = setInterval(() => this.rotate(), 4000); // Cada 4 segundos
+            }
+
+            pauseRotation() {
+                if (this.rotationInterval) {
+                    clearInterval(this.rotationInterval);
+                    this.rotationInterval = null;
+                }
+            }
+        }
+
+        // Inicializar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            new PricingRotator();
         });
     </script>
 </body>
