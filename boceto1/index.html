@@ -811,6 +811,34 @@
             });
         });
     </script>
+
+    <!-- Seccion servicios-->
+    <script>
+        const expandOptions = document.querySelectorAll('.expand-option');
+        let hoverTimeout;
+
+        expandOptions.forEach((option) => {
+            // Función para activar la opción
+            const activateOption = () => {
+                expandOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+            };
+
+            // Click inmediato para mobile y desktop
+            option.addEventListener('click', activateOption);
+
+            // Hover con delay para desktop
+            option.addEventListener('mouseenter', () => {
+                clearTimeout(hoverTimeout);
+                hoverTimeout = setTimeout(activateOption, 300);
+            });
+
+            // Limpiar el timeout si sale antes del delay
+            option.addEventListener('mouseleave', () => {
+                clearTimeout(hoverTimeout);
+            });
+        });
+    </script>
 </body>
 
 </html>
