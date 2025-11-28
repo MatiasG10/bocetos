@@ -2392,6 +2392,9 @@ body {
                 }
 
                 .faq-questions {
+                    /* Altura mínima para prevenir que el grid se recalcule */
+                    min-height: 100vh;
+
                     .faq-item {
                         background: var(--color-bg-card);
                         border-radius: 15px;
