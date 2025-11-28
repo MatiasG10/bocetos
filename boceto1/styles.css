@@ -1072,28 +1072,23 @@ body {
                 flex-direction: column;
                 align-items: stretch;
                 overflow: hidden;
-                max-width: 1200px;
-                width: calc(100% - 100px);
-                height: 500px;
-                margin: 0 auto;
+                max-width: 75rem;
+                height: 31.25rem;
+                margin: 0;
+                padding: 1rem;
 
-                /* Efecto hover global */
                 &:hover>.expand-option {
                     opacity: 1;
-                    /* Mantener opacidad completa */
                     filter: brightness(0.4);
-                    /* Oscurecer en lugar de transparentar */
                 }
 
                 &:hover>.expand-option:hover {
                     opacity: 1;
                     filter: brightness(1);
-                    /* Brillo normal */
                 }
 
                 &:hover>.expand-option.active {
                     filter: brightness(1.1) !important;
-                    /* La activa más brillante */
                 }
 
                 .expand-option {
@@ -1249,7 +1244,9 @@ body {
                 .expanding-options {
                     flex-direction: row;
                     min-width: 600px;
-
+                    width: calc(100% - 100px);
+                    margin: 0 auto;
+                    padding: 0;
                     .expand-option {
                         background-size: auto 120%;
 
@@ -2940,7 +2937,7 @@ body {
         /* display: none; */
     }
 
-    /* .faq-section {
+    .faq-section {
         display: none;
     }
 
@@ -2961,12 +2958,12 @@ body {
     }
 
     .services-section {
-        display: none;
+        /* display: none; */
     }
 
     .pvu-section {
-        display: none;
-    } */
+        /* display: none; */
+    }
 
     .hero2 {
         /* display: none; */
