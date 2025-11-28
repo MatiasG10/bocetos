@@ -172,7 +172,7 @@ body {
         }
     }
 
-    /* Hero Section */
+    /* Hero Section  -- modificado*/
     .header {
         display: flex;
         width: 100%;
@@ -1032,7 +1032,7 @@ body {
     }
 
 
-    /* Sección Servicios */
+    /* Sección Servicios -- modificado */
     .services-section {
         padding: 120px 0;
         position: relative;
@@ -1267,7 +1267,7 @@ body {
         }
     }
 
-    /* Sección Proceso de Trabajo */
+    /* Sección Proceso de Trabajo -- modificado */
     .proceso-section {
         padding: 120px 0;
         position: relative;
@@ -1340,7 +1340,7 @@ body {
                 .proceso-step {
                     position: relative;
                     display: grid;
-                    grid-template-columns: 80px 80px 1fr;
+                    grid-template-columns: 40px 40px 1fr;
                     gap: 2rem;
                     align-items: center;
                     margin-bottom: 4rem;
@@ -1358,16 +1358,18 @@ body {
                     }
 
                     .step-number {
+                        position: relative;
                         font-size: 2.5rem;
                         font-weight: 700;
                         color: var(--color-accent);
                         opacity: 0.3;
                         text-align: center;
+                        top: -15px;
                     }
 
                     .step-icon {
-                        width: 80px;
-                        height: 80px;
+                        width: 40px;
+                        height: 40px;
                         background: var(--color-accent);
                         border-radius: 50%;
                         display: flex;
@@ -1378,10 +1380,21 @@ body {
                         transition: all 0.3s ease;
                         position: relative;
                         z-index: 2;
+                        top: -15px;
 
                         svg {
-                            width: 40px;
-                            height: 40px;
+                            width: 20px;
+                            height: 20px;
+                        }
+
+                        @media (min-width: 768px) {
+                            width: 80px;
+                            height: 80px;
+
+                            svg {
+                                width: 40px;
+                                height: 40px;
+                            }
                         }
                     }
 
@@ -1430,7 +1443,7 @@ body {
 
                     .step-line {
                         position: absolute;
-                        left: 150px;
+                        left: 90px;
                         top: 80px;
                         width: 2px;
                         height: calc(100% + 4rem);
@@ -1490,74 +1503,24 @@ body {
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
+    @media (min-width: 768px) {
+
         .proceso-section {
-            padding: 80px 0;
+            .proceso-container {
+                .proceso-timeline {
+                    .proceso-step {
+                        grid-template-columns: 80px 80px 1fr;
 
-            .proceso-timeline {
-                .proceso-step {
-                    grid-template-columns: 50px 1fr;
-                    gap: 1.5rem;
-
-                    .step-number {
-                        display: none;
-                    }
-
-                    .step-icon {
-                        width: 60px;
-                        height: 60px;
-                        grid-column: 1;
-                        grid-row: 1;
-
-                        svg {
-                            width: 30px;
-                            height: 30px;
+                        .step-line {
+                            left: 150px;
                         }
                     }
-
-                    .step-content {
-                        grid-column: 2;
-                        grid-row: 1;
-                        padding: 1.5rem;
-
-                        h3 {
-                            font-size: 1.2rem;
-                        }
-
-                        p {
-                            font-size: 0.95rem;
-                        }
-                    }
-
-                    .step-line {
-                        left: 30px;
-                        top: 60px;
-                    }
-
-                    &:hover .step-content {
-                        transform: translateX(5px);
-                    }
-                }
-            }
-
-            .proceso-cta {
-                padding: 2rem 1.5rem;
-
-                h3 {
-                    font-size: 1.5rem;
-                }
-
-                p {
-                    font-size: 1rem;
-                }
-
-                .btn-proceso-cta {
-                    width: 100%;
-                    padding: 1rem 2rem;
                 }
             }
         }
     }
+
+
 
     /* Dark mode */
     [data-theme="dark"] {
