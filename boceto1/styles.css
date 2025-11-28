@@ -1782,7 +1782,11 @@ body {
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0;
+
+            @media (min-width: 768px) {
+                padding: 0 2rem;
+            }
 
             .section-title {
                 font-size: clamp(2rem, 5vw, 2.5rem);
@@ -1876,8 +1880,8 @@ body {
                 .pricing-card-modern {
                     background: white;
                     border-radius: 15px;
-                    padding: 2.5rem 2rem;
-                    width: 350px;
+                    padding: 2rem 0.5rem;
+                    width: 100%;
                     text-align: center;
                     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
                     transition: all 0.3s ease;
@@ -1888,6 +1892,11 @@ body {
                     animation-timeline: view();
                     animation-range: cover 20% cover 50%;
                     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+                    @media (min-width: 768px) {
+                        width: 350px;
+                        padding: 2.5rem 2rem;
+                    }
 
                     &:first-child {
                         margin-right: -30px;
@@ -1908,14 +1917,20 @@ body {
                     /* Featured Card - Más grande y destacada */
                     &.featured {
                         background: linear-gradient(135deg, #A3A8F0, #696EDD);
-                        padding: 3rem 2.5rem;
-                        width: 380px;
-                        min-height: 530px;
+                        padding: 2rem 0.5rem;
+                        width: 100%;
+                        min-height: 0px;
                         z-index: 3;
                         box-shadow: 0 20px 60px rgba(105, 110, 221, 0.3);
                         animation-delay: 0.2s;
                         transform: scale(1.05);
                         transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+                        @media (min-width: 768px) {
+                            width: 350px;
+                            padding: 3rem 2.5rem;
+                            min-height: 530px;
+                        }
 
                         .card-title {
                             color: white;
@@ -2953,9 +2968,9 @@ body {
     }
 
     .faq-section {
-        display: none;
+        /* display: none; */
     }
-
+    
     .testimonials-section {
         display: none;
     }
@@ -2964,33 +2979,33 @@ body {
         display: none;
     }
 
-    .portfolio-section {
-        /* display: none; */
-    }
+    /* .portfolio-section {
+        display: none;
+    } */
 
-    .proceso-section {
-        /* display: none; */
+    /* .proceso-section {
+        display: none;
     }
 
     .services-section {
-        /* display: none; */
+        display: none;
     }
 
     .pvu-section {
-        /* display: none; */
-    }
+        display: none;
+    } */
 
-    .hero2 {
-        /* display: none; */
+    /* .hero2 {
+        display: none;
     }
 
     .header {
-        /* display: none; */
+        display: none;
     }
 
     .theme-toggle {
-        /* display: none; */
-    }
+        display: none;
+    } */
 }
 
 /*para cambiar icono - Toogle Tema*/
