@@ -1247,6 +1247,7 @@ body {
                     width: calc(100% - 100px);
                     margin: 0 auto;
                     padding: 0;
+
                     .expand-option {
                         background-size: auto 120%;
 
@@ -1344,7 +1345,7 @@ body {
                 .proceso-step {
                     position: relative;
                     display: grid;
-                    grid-template-columns: 40px 40px 1fr;
+                    grid-template-columns: 1fr;
                     gap: 2rem;
                     align-items: center;
                     margin-bottom: 4rem;
@@ -1385,20 +1386,11 @@ body {
                         position: relative;
                         z-index: 2;
                         top: -15px;
+                        display: none;
 
                         svg {
                             width: 20px;
                             height: 20px;
-                        }
-
-                        @media (min-width: 768px) {
-                            width: 80px;
-                            height: 80px;
-
-                            svg {
-                                width: 40px;
-                                height: 40px;
-                            }
                         }
                     }
 
@@ -1414,6 +1406,7 @@ body {
                         border: 2px solid var(--color-border);
                         transition: all 0.3s ease;
                         position: relative;
+                        z-index: 10;
 
                         h3 {
                             font-size: 1.5rem;
@@ -1447,8 +1440,8 @@ body {
 
                     .step-line {
                         position: absolute;
-                        left: 90px;
-                        top: 80px;
+                        left: 50px;
+                        top: 85px;
                         width: 2px;
                         height: calc(100% + 4rem);
                         background: linear-gradient(180deg, var(--color-accent) 0%, var(--color-border) 100%);
@@ -1469,7 +1462,7 @@ body {
                 animation: fadeInScale 0.8s ease-out forwards;
                 animation-timeline: view();
                 animation-range: cover 0% cover 35%;
-                ;
+
 
                 h3 {
                     font-size: 2rem;
@@ -1517,6 +1510,17 @@ body {
 
                         .step-line {
                             left: 150px;
+                        }
+
+                        .step-icon {
+                            display: flex;
+                            width: 80px;
+                            height: 80px;
+
+                            svg {
+                                width: 40px;
+                                height: 40px;
+                            }
                         }
                     }
                 }
@@ -2954,7 +2958,7 @@ body {
     }
 
     .proceso-section {
-        display: none;
+        /* display: none; */
     }
 
     .services-section {
