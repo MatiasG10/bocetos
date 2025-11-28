@@ -2294,7 +2294,8 @@ body {
         padding: 120px 0;
         position: relative;
         z-index: 100;
-        background: var(--color-bg-primary);
+        /* background: var(--color-bg-primary); */
+        background: linear-gradient(180deg, transparent 11%, #000 14%, #000 75%, transparent 95%);
 
         .faq-container {
             max-width: 1300px;
