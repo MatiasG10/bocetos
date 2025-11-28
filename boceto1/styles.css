@@ -293,20 +293,19 @@ body {
                 right: 0;
                 margin: auto;
                 height: 20em;
-                padding-top: 2em;
+                padding-top: clamp(0rem, -0.727rem + 3.64vw, 2rem);
                 translate: 0 4em;
                 opacity: 0;
                 animation: load 2s ease-in-out 0.6s forwards;
                 z-index: 100;
 
-                &>h2 {
+                &>h1 {
                     position: absolute;
                     left: 0;
                     right: 0;
                     margin: auto;
                     width: fit-content;
-
-                    font-size: 7em;
+                    font-size: clamp(5em, 8vw, 7em);
                     font-weight: 600;
                     color: #9dc3f7;
                     background:
@@ -320,11 +319,21 @@ body {
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                     text-shadow: 0 2px 16px rgba(174, 207, 242, .24);
-
                     --p: 0%;
                     transition: --p 3s linear;
-
                     animation: pulse 10s linear 1.2s infinite;
+
+                    @media (min-width: 500px) {
+                        padding-top: 0.15em;
+                    }
+
+                    @media (min-width: 600px) {
+                        padding-top: 0.3em;
+                    }
+
+                    @media (min-width: 768px) {
+                        padding-top: 0.45em;
+                    }
                 }
 
                 & h2:nth-child(2) {
@@ -749,6 +758,19 @@ body {
         .hero-spacer {
             height: 40em;
             pointer-events: none;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .hero2 {
+            .hero {
+                .heroT {
+                    &>h1 {
+                        font-size: 7em;
+                        padding: 0;
+                    }
+                }
+            }
         }
     }
 
