@@ -276,6 +276,7 @@ body {
 
     .hero2 {
         height: 90vh;
+
         .hero {
             width: 100%;
             max-height: 140px;
@@ -1043,7 +1044,7 @@ body {
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0;
             width: 100%;
 
             .section-title {
@@ -1055,15 +1056,15 @@ body {
                 animation: fadeInUp 0.8s ease-out forwards;
                 animation-timeline: view();
                 animation-range: cover 20% cover 50%;
+
             }
 
             .expanding-options {
                 display: flex;
                 gap: 1rem;
-                flex-direction: row;
+                flex-direction: column;
                 align-items: stretch;
                 overflow: hidden;
-                min-width: 600px;
                 max-width: 1200px;
                 width: calc(100% - 100px);
                 height: 500px;
@@ -1094,7 +1095,7 @@ body {
                     min-width: 60px;
                     width: 60px;
                     background: var(--optionBackground, var(--color-bg-secondary));
-                    background-size: auto 120%;
+                    background-size: cover;
                     background-position: center;
                     cursor: pointer;
                     border-radius: 30px;
@@ -1112,7 +1113,8 @@ body {
                     &.active {
                         flex-grow: 10000;
                         transform: scale(0.98);
-                        max-width: 800px;
+                        width: 100%;
+                        height: 100%;
                         margin: 0px;
                         border-radius: 40px;
                         box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
@@ -1139,21 +1141,24 @@ body {
                     &:not(.active) {
                         flex-grow: 1;
                         border-radius: 50px;
+                        height: 6rem;
+                        width: 100%;
 
                         .expand-shadow {
                             bottom: -40px;
-                            box-shadow: inset 0 -120px 0px -120px rgba(0, 0, 0, 0.4),
-                                inset 0 -120px 0px -100px rgba(0, 0, 0, 0.3);
+                            /* box-shadow: inset 0 -120px 0px -120px rgba(0, 0, 0, 0.4),
+                                inset 0 -120px 0px -100px rgba(0, 0, 0, 0.3); */
                         }
 
                         .expand-label {
-                            bottom: 15px;
-                            left: 12px;
+                            bottom: -8px;
+                            left: -2px;
 
                             .expand-info>div {
                                 left: 20px;
                                 opacity: 0;
                             }
+
                         }
                     }
 
@@ -1229,62 +1234,33 @@ body {
     }
 
     /* Responsive */
-    @media (max-width: 1200px) {
-        .services-section .expanding-options {
-            min-width: 500px;
-            height: 450px;
-        }
-    }
+    @media (min-width: 768px) {
+        .services-section {
+            .container {
+                padding: 0 2rem;
 
-    @media (max-width: 968px) {
-        .services-section .expanding-options {
-            min-width: 400px;
-            height: 400px;
+                .expanding-options {
+                    flex-direction: row;
+                    min-width: 600px;
 
-            .expand-option:nth-child(5) {
-                display: none;
-            }
-        }
-    }
+                    .expand-option {
+                        background-size: auto 120%;
 
-    @media (max-width: 768px) {
-        .services-section .expanding-options {
-            flex-direction: column;
-            min-width: auto;
-            width: 100%;
-            height: 600px;
-
-            .expand-option {
-                min-height: 60px;
-                width: 100%;
-
-                &.active {
-                    max-width: 100%;
-                    max-height: 400px;
-                }
-
-                &:nth-child(4),
-                &:nth-child(5) {
-                    display: none;
-                }
-            }
-        }
-    }
-
-    @media (max-width: 640px) {
-        .services-section .expanding-options {
-            height: 500px;
-
-            .expand-option {
-                .expand-label {
-                    .expand-info {
-                        .expand-main {
-                            font-size: 1.2rem;
+                        &.active {
+                            width: unset;
                         }
 
-                        .expand-sub {
-                            font-size: 0.9rem;
+                        &:not(.active) {
+                            height: unset;
+                            width: 80px;
+                            min-width: 80px;
+
+                            .expand-label {
+                                bottom: 15px;
+                                left: 12px;
+                            }
                         }
+
                     }
                 }
             }
