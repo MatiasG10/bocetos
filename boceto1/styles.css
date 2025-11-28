@@ -2744,33 +2744,105 @@ body {
 
             /* Links grid */
             .footer-links-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 2rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
 
                 .footer-column {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.75rem;
+                    border-bottom: 1px solid var(--color-border);
 
-                    h4 {
-                        font-size: 0.875rem;
-                        font-weight: 600;
-                        color: var(--color-text-primary);
-                        text-transform: uppercase;
-                        letter-spacing: 0.05em;
-                        margin: 0 0 0.5rem 0;
+                    .accordion-trigger {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        background: none;
+                        border: none;
+                        cursor: pointer;
+                        padding: 1rem 0;
+
+                        h4 {
+                            font-size: 0.875rem;
+                            font-weight: 600;
+                            color: var(--color-text-primary);
+                            text-transform: uppercase;
+                            letter-spacing: 0.05em;
+                            margin: 0;
+                        }
+
+                        .accordion-icon {
+                            width: 16px;
+                            height: 16px;
+                            color: var(--color-text-secondary);
+                            transition: transform 0.3s ease;
+                        }
+
+                        &[aria-expanded="true"] .accordion-icon {
+                            transform: rotate(180deg);
+                        }
                     }
 
-                    a {
+                    /* ESTE ES EL BLOQUE QUE FALTABA */
+                    .accordion-content {
+                        max-height: 0;
+                        overflow: hidden;
+                        transition: max-height 0.3s ease-out;
+
+                        /* Wrapper interno necesario para que funcione bien */
+                        >div {
+                            padding-bottom: 1rem;
+                        }
+                    }
+
+                    .accordion-content.active {
+                        max-height: 300px;
+                        /* Ajusta según tu contenido máximo */
+                    }
+
+                    .accordion-content a {
                         color: var(--color-text-secondary);
                         text-decoration: none;
                         font-size: 0.9rem;
+                        display: block;
+                        padding: 0.5rem 0;
                         transition: var(--transition);
 
                         &:hover {
                             color: var(--color-accent);
                             padding-left: 4px;
+                        }
+                    }
+                }
+            }
+
+            /* DESKTOP - Grid normal */
+            @media (min-width: 769px) {
+                .footer-links-grid {
+                    display: grid !important;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 2rem;
+
+                    .footer-column {
+                        border-bottom: none;
+
+                        .accordion-trigger {
+                            cursor: default;
+                            padding: 0;
+
+                            .accordion-icon {
+                                display: none;
+                                /* Ocultar icono */
+                            }
+                        }
+
+                        /* FORZAR VISIBILIDAD en desktop */
+                        .accordion-content {
+                            max-height: none !important;
+                            overflow: visible !important;
+
+                            >div {
+                                padding-bottom: 0;
+                            }
                         }
                     }
                 }
@@ -2786,6 +2858,7 @@ body {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-direction: row;
 
             p {
                 color: var(--color-text-secondary);
@@ -2812,6 +2885,11 @@ body {
                 span {
                     color: var(--color-border);
                 }
+            }
+
+            @media (max-width: 768px){
+                flex-direction: column;
+                gap: 1.5rem;
             }
         }
     }
@@ -2876,6 +2954,58 @@ body {
             background: var(--color-bg-card);
             border-top-color: var(--color-border);
         }
+    }
+
+    section {
+        /* display: none; */
+    }
+
+    .minimal-footer {
+        /* display: none; */
+    }
+
+    .connect {
+        /* display: none; */
+    }
+
+    .faq-section {
+        /* display: none; */
+    }
+
+    .testimonials-section {
+        /* display: none; */
+    }
+
+    .pricing-section {
+        /* display: none; */
+    }
+
+    .portfolio-section {
+        /* display: none; */
+    }
+
+    .proceso-section {
+        /* display: none; */
+    }
+
+    .services-section {
+        /* display: none; */
+    }
+
+    .pvu-section {
+        /* display: none; */
+    }
+
+    .hero2 {
+        /* display: none; */
+    }
+
+    .header {
+        /* display: none; */
+    }
+
+    .theme-toggle {
+        /* display: none; */
     }
 }
 

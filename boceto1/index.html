@@ -874,26 +874,47 @@
             <!-- Links de navegación -->
             <div class="footer-links-grid">
                 <div class="footer-column">
-                    <h4>Servicios</h4>
-                    <a href="#servicios">Desarrollo Web</a>
-                    <a href="#servicios">UI/UX Design</a>
-                    <a href="#servicios">SEO & Marketing</a>
-                    <a href="#servicios">Consultoría</a>
+                    <button class="accordion-trigger" aria-expanded="false">
+                        <h4>Servicios</h4>
+                        <svg class="accordion-icon" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 12L2 6h12z" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <a href="#servicios">Desarrollo Web</a>
+                        <a href="#servicios">UI/UX Design</a>
+                        <a href="#servicios">SEO & Marketing</a>
+                        <a href="#servicios">Consultoría</a>
+                    </div>
                 </div>
 
                 <div class="footer-column">
-                    <h4>Empresa</h4>
-                    <a href="#portfolio">Portfolio</a>
-                    <a href="#testimonios">Testimonios</a>
-                    <a href="#tech">Tecnologías</a>
-                    <a href="#contacto">Contacto</a>
+                    <button class="accordion-trigger" aria-expanded="false">
+                        <h4>Empresa</h4>
+                        <svg class="accordion-icon" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 12L2 6h12z" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <a href="#portfolio">Portfolio</a>
+                        <a href="#testimonios">Testimonios</a>
+                        <a href="#tech">Tecnologías</a>
+                        <a href="#contacto">Contacto</a>
+                    </div>
                 </div>
 
                 <div class="footer-column">
-                    <h4>Legal</h4>
-                    <a href="#">Privacidad</a>
-                    <a href="#">Términos</a>
-                    <a href="#">Cookies</a>
+                    <button class="accordion-trigger" aria-expanded="false">
+                        <h4>Legal</h4>
+                        <svg class="accordion-icon" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 12L2 6h12z" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <a href="#">Privacidad</a>
+                        <a href="#">Términos</a>
+                        <a href="#">Cookies</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1257,6 +1278,42 @@
                     }
                 });
             });
+        });
+    </script>
+
+    <!-- acordeon -->
+    <script>
+        // Acordeón del Footer (MOBILE ONLY)
+        const footerTriggers = document.querySelectorAll('.footer-column .accordion-trigger');
+
+        const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+
+        const toggleAccordion = (trigger, event) => {
+            event.preventDefault(); // ¡IMPORTANTE!
+
+            if (!isMobile()) return; // No hacer nada en desktop
+
+            const expanded = trigger.getAttribute('aria-expanded') === 'true';
+            const content = trigger.nextElementSibling;
+
+            // Toggle clase active
+            trigger.setAttribute('aria-expanded', !expanded);
+            content.classList.toggle('active');
+        };
+
+        // Añadir event listeners
+        footerTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => toggleAccordion(trigger, e));
+        });
+
+        // Resetear al cambiar tamaño (opcional pero recomendado)
+        window.addEventListener('resize', () => {
+            if (!isMobile()) {
+                footerTriggers.forEach(trigger => {
+                    trigger.setAttribute('aria-expanded', 'false');
+                    trigger.nextElementSibling.classList.remove('active');
+                });
+            }
         });
     </script>
 </body>
