@@ -2686,6 +2686,10 @@ body {
             grid-template-columns: 1.5fr 1fr;
             gap: 4rem;
 
+            @media (max-width: 768px) {
+                grid-template-columns: 1fr;
+            }
+
             /* Brand section */
             .footer-brand {
                 display: flex;
@@ -2813,7 +2817,7 @@ body {
     }
 
     /* Responsive */
-    @media (max-width: 968px) {
+    /* @media (max-width: 968px) {
         .footer-container {
             grid-template-columns: 1fr;
             gap: 3rem;
@@ -2844,7 +2848,7 @@ body {
             flex-wrap: wrap;
             justify-content: center;
         }
-    }
+    } */
 
 
     /* Responsive */
