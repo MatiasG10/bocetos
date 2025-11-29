@@ -88,6 +88,8 @@ html {
     top: 0px;
     width: 100%;
     z-index: 1;
+    height: 100vh;
+    height: 100dvh;
 
     &::after {
         content: '';
@@ -109,6 +111,7 @@ html {
         height: 100%;
         width: 100%;
         z-index: 1;
+        background-attachment: scroll;
     }
 
     .bg-particles {
@@ -126,6 +129,22 @@ html {
             border-radius: 50%;
             opacity: 0;
             animation: floatParticle 10s linear infinite;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    #app-background {
+        /* Asegurar que mantenga el tamaño */
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        .background-image {
+            /* Mobile: imagen fija sin parallax */
+            background-attachment: scroll;
+            /* Prevenir "jumping" */
+            transform: translateZ(0);
+            backface-visibility: hidden;
         }
     }
 }
