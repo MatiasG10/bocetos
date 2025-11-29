@@ -474,7 +474,7 @@
         <div class="container">
             <h2 class="section-title scroll-animate">Our Pricing</h2>
 
-            
+
             <div class="pricing-toggle">
                 <span class="toggle-label active" id="annuallyLabel">Annually</span>
                 <label class="toggle-switch">
@@ -485,7 +485,7 @@
             </div>
 
             <div class="pricing-cards-wrapper">
-                
+
                 <div class="pricing-card-modern scroll-animate">
                     <h3 class="card-title">Basic</h3>
                     <div class="card-price">
@@ -500,7 +500,7 @@
                     <button class="card-btn">Learn More</button>
                 </div>
 
-                
+
                 <div class="pricing-card-modern featured scroll-animate">
                     <h3 class="card-title">Professional</h3>
                     <div class="card-price">
@@ -515,7 +515,7 @@
                     <button class="card-btn">Learn More</button>
                 </div>
 
-                
+
                 <div class="pricing-card-modern scroll-animate">
                     <h3 class="card-title">Master</h3>
                     <div class="card-price">
@@ -1178,10 +1178,18 @@
         });
     </script>
 
-    <!-- Seccion servicios /luego hacer modulo-->
+    <!-- Seccion servicios - Optimizado para mobile -->
     <script>
         const expandOptions = document.querySelectorAll('.expand-option');
         let hoverTimeout;
+        let isTouch = false;
+
+        // Detectar si es dispositivo táctil
+        const detectTouch = () => {
+            isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        };
+
+        detectTouch();
 
         expandOptions.forEach((option) => {
             // Función para activar la opción
@@ -1190,17 +1198,33 @@
                 option.classList.add('active');
             };
 
-            // Click inmediato para mobile y desktop
-            option.addEventListener('click', activateOption);
+            // MOBILE/TOUCH: Solo click, sin hover
+            if (isTouch) {
+                option.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    activateOption();
+                }, { passive: false });
+            }
+            // DESKTOP: Hover + Click
+            else {
+                option.addEventListener('click', activateOption);
 
-            // Hover SIN delay para desktop (más fluido como el ejemplo)
-            option.addEventListener('mouseenter', () => {
-                clearTimeout(hoverTimeout);
-                activateOption(); // Inmediato, sin delay
-            });
-
-            // No necesitamos mouseleave porque el hover en otra card la activa
+                option.addEventListener('mouseenter', () => {
+                    clearTimeout(hoverTimeout);
+                    activateOption();
+                });
+            }
         });
+
+        // Optimización: Prevenir scroll bounce en iOS
+        if (isTouch) {
+            const container = document.querySelector('.expanding-options');
+            if (container) {
+                container.addEventListener('touchmove', (e) => {
+                    e.stopPropagation();
+                }, { passive: true });
+            }
+        }
     </script>
 
     <!-- seccion planes /luego hacer modulo-->
