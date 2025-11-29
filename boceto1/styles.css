@@ -2085,7 +2085,6 @@ body {
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
 
             .section-title {
                 font-size: clamp(2.5rem, 5vw, 4rem);
@@ -2099,7 +2098,6 @@ body {
             }
 
             .testimonials-carousel {
-                max-width: 800px;
                 margin: 0 auto;
                 position: relative;
                 height: 300px;
@@ -2108,7 +2106,6 @@ body {
                     position: absolute;
                     width: 100%;
                     opacity: 0;
-                    transform: translateX(50px);
                     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
                     background: var(--color-bg-card);
                     padding: 3rem 4rem;
@@ -2212,29 +2209,20 @@ body {
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
-        .contact-wrapper {
-            grid-template-columns: 1fr;
-        }
+    @media (min-width: 768px) {
+        .testimonials-section {
+            .container {
 
-        .pricing-grid,
-        .tech-grid {
-            grid-template-columns: 1fr;
-        }
+                padding: 0 2rem;
 
-        .pricing-card.featured {
-            transform: scale(1);
-        }
+                .testimonials-carousel {
+                    max-width: 800px;
 
-        .testimonials-carousel {
-            height: 350px;
-        }
-
-        .carousel-controls {
-            position: static;
-            margin-top: 1rem;
-            justify-content: center;
-            gap: 1rem;
+                    .testimonial-card {
+                        transform: translateX(50px);
+                    }
+                }
+            }
         }
     }
 
@@ -2928,7 +2916,7 @@ body {
     }
 
     .testimonials-section {
-        display: none;
+        /* display: none; */
     }
 
     .pricing-section {
