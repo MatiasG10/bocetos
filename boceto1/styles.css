@@ -1784,10 +1784,6 @@ body {
             margin: 0 auto;
             padding: 0;
 
-            @media (min-width: 768px) {
-                padding: 0 2rem;
-            }
-
             .section-title {
                 font-size: clamp(2rem, 5vw, 2.5rem);
                 font-weight: 700;
@@ -1800,7 +1796,6 @@ body {
                 animation-range: cover 20% cover 50%;
             }
 
-            /* Toggle Switch */
             .pricing-toggle {
                 display: flex;
                 align-items: center;
@@ -1867,20 +1862,20 @@ body {
                 }
             }
 
-            /* Cards Wrapper - Superpuestas */
             .pricing-cards-wrapper {
                 display: flex;
                 justify-content: center;
-                align-items: center;
                 position: relative;
                 max-width: 1100px;
                 margin: 0 auto;
                 min-height: 550px;
+                flex-direction: column;
+                gap: 1.5rem;
 
                 .pricing-card-modern {
                     background: white;
                     border-radius: 15px;
-                    padding: 2rem 0.5rem;
+                    padding: 2rem 1.5rem;
                     width: 100%;
                     text-align: center;
                     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
@@ -1893,18 +1888,12 @@ body {
                     animation-range: cover 20% cover 50%;
                     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
-                    @media (min-width: 768px) {
-                        width: 350px;
-                        padding: 2.5rem 2rem;
-                    }
-
                     &:first-child {
                         margin-right: -30px;
                         animation-delay: 0s;
                     }
 
                     &:last-child {
-                        margin-left: -30px;
                         animation-delay: 0.4s;
                     }
 
@@ -1914,23 +1903,15 @@ body {
                         z-index: 2;
                     }
 
-                    /* Featured Card - Más grande y destacada */
                     &.featured {
                         background: linear-gradient(135deg, #A3A8F0, #696EDD);
-                        padding: 2rem 0.5rem;
+                        padding: 2rem 1.5rem;
                         width: 100%;
                         min-height: 0px;
                         z-index: 3;
                         box-shadow: 0 20px 60px rgba(105, 110, 221, 0.3);
                         animation-delay: 0.2s;
-                        transform: scale(1.05);
                         transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-
-                        @media (min-width: 768px) {
-                            width: 350px;
-                            padding: 3rem 2.5rem;
-                            min-height: 530px;
-                        }
 
                         .card-title {
                             color: white;
@@ -2065,53 +2046,31 @@ body {
         }
     }
 
-    /* Responsive */
-    @media (max-width: 1100px) {
-        .pricing-section .pricing-cards-wrapper {
-            .pricing-card-modern {
-                width: 300px;
-
-                &.featured {
-                    width: 330px;
-                }
-            }
-        }
-    }
-
-    @media (max-width: 968px) {
-        .pricing-section .pricing-cards-wrapper {
-            flex-direction: column;
-            gap: 2rem;
-            min-height: auto;
-
-            .pricing-card-modern {
-                width: 100%;
-                max-width: 400px;
-                margin: 0 !important;
-
-                &.featured {
-                    width: 100%;
-                    transform: scale(1);
-
-                    &:hover {
-                        transform: translateY(-8px);
-                    }
-                }
-            }
-        }
-    }
-
-    @media (max-width: 640px) {
+    /*responsive*/
+    @media (min-width: 768px) {
         .pricing-section {
-            padding: 80px 0;
+            .container {
+                padding: 0 2rem;
 
-            .card-price {
-                .currency {
-                    font-size: 1.5rem !important;
-                }
+                .pricing-cards-wrapper {
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 0;
 
-                .amount {
-                    font-size: 3rem !important;
+                    .pricing-card-modern {
+                        width: 350px;
+                        padding: 2.5rem 2rem;
+
+                        &:last-child {
+                            margin-left: -30px;
+                        }
+
+                        &.featured {
+                            width: 350px;
+                            padding: 3rem 2.5rem;
+                            min-height: 530px;
+                        }
+                    }
                 }
             }
         }
@@ -2120,7 +2079,6 @@ body {
     /* seccion testimonios */
     .testimonials-section {
         padding: 120px 0;
-        /* background: var(--color-bg-primary); */
         position: relative;
         z-index: 100;
 
@@ -2138,7 +2096,6 @@ body {
                 animation: fadeInUp 0.8s ease-out forwards;
                 animation-timeline: view();
                 animation-range: cover 20% cover 50%;
-
             }
 
             .testimonials-carousel {
@@ -2286,7 +2243,6 @@ body {
         padding: 120px 0;
         position: relative;
         z-index: 100;
-        /* background: var(--color-bg-primary); */
         background: linear-gradient(180deg, transparent 11%, #000 14%, #000 75%, transparent 95%);
 
         .faq-container {
@@ -2970,13 +2926,13 @@ body {
     .faq-section {
         /* display: none; */
     }
-    
+
     .testimonials-section {
         display: none;
     }
 
     .pricing-section {
-        display: none;
+        /* display: none; */
     }
 
     /* .portfolio-section {
